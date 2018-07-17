@@ -8,7 +8,7 @@ let io = require('socket.io')(server);
 let nameObj = {};
 let initChat = [];
 
-PORT = process.env.PORT || 5000;
+let PORT = process.env.PORT || 5000;
 /*
 console.log(app);
 console.log();
