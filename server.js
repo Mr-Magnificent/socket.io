@@ -8,6 +8,7 @@ let io = require('socket.io')(server);
 let nameObj = {};
 let initChat = [];
 
+PORT - process.env.PORT || 5000;
 /*
 console.log(app);
 console.log();
@@ -55,6 +56,6 @@ io.on('connection', function (socket) {
 
 
 
-server.listen(5000, function () {
-    console.log('Server is listening on port 5000');
+server.listen(PORT, function () {
+    console.log('Server is listening on port ' + PORT);
 });
