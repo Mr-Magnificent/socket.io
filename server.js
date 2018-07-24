@@ -23,9 +23,6 @@ app.use('/', express.static('./public'));
 
 
 io.on('connection', function (socket) {
-    console.log();
-    console.log(socket.id);
-
 
     socket.on('name', function (data) {
         console.log(data);
@@ -42,13 +39,18 @@ io.on('connection', function (socket) {
         socket.broadcast.emit('reciveData', data);
         console.log(data);
         initChat.push(data);
-    })
+    });
 
     socket.on('disconnect', function () {
         delete nameObj[socket.id];
         console.log('disconnect');
         console.log(nameObj);
         io.sockets.emit('initConnect', nameObj);
+        console.log(Object.keys(nameObj).length);
+        if (Object.keys(nameObj).length === 0) {
+
+            initChat = [];
+        }
 
     })
 });
